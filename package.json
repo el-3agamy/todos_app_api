@@ -16,7 +16,9 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon",
     "build": "tsc",
-    "start": "node dist/index.js"
+    "start": "node dist/index.js",
+      "postinstall": "npm install typescript --no-save"
+
   },
   "devDependencies": {
     "@types/cors": "^2.8.19",
