@@ -2,6 +2,8 @@ import { Request, Response } from "express";
 import userModel, { IUser } from "../models/user";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
+import rgisterSchema from "../validations/registerValidation";
+import loginSchema from "../validations/loginValidation";
 interface IResponseUser {
     data?: object,
     msg?: string
@@ -9,6 +11,7 @@ interface IResponseUser {
 // register new user : ==>
 const registerUser = async (req: Request<{}, {}, IUser>, res: Response) => {
     try {
+      
         const body = req.body;
         if (!body) return;
         const {password} :{password : string} = body ;
@@ -30,6 +33,7 @@ const registerUser = async (req: Request<{}, {}, IUser>, res: Response) => {
 // login : ==>
 const login = async (req: Request, res: Response) => {
   try {
+  
     const { email, password } = req.body;
 
     if (!email || !password)

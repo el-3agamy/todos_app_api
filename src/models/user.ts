@@ -20,7 +20,7 @@
                     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(mail)
                 }
             },
-            required: false
+            required: true
         },
         password :{
         type: String ,
@@ -30,7 +30,7 @@
         ,
         phone: {
             type: Number, // chatgpt is told me that phone numbers should be string not number
-            unique: false,
+            unique: true,
             // validate: {
             //     validator: (p: number) => {
             //         return /\d{3}-\d{3}-\d{4}/.test(p.toString()); // test() accept string only

@@ -1,6 +1,5 @@
 import mongoose, { Schema, model, InferSchemaType , Types } from "mongoose";
 
-// 1️⃣ عرّف الـ Schema عادي (من غير Interface ولا extends Document)
 const todoSchema = new Schema(
   {
     name: {
@@ -28,10 +27,8 @@ const todoSchema = new Schema(
   { timestamps: true }
 );
 
-// 2️⃣ خلّي TypeScript يستنتج النوع تلقائيًا من الـ Schema
 export type ITodo = InferSchemaType<typeof todoSchema>;
 
-// 3️⃣ اعمل الـ Model مضبوط
 const todoModel = model<ITodo>("TodosTS", todoSchema , "TodosTS");
 
 export default todoModel;
