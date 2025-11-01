@@ -5,6 +5,7 @@ const validationMiddleware = (schema : any)=>{
       if(error){
       return  res.status(400).json({msg:error.message});
       }
+      next()
     }
 };
 
