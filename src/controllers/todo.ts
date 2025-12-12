@@ -1,5 +1,6 @@
 import { Request, Response, NextFunction } from "express";
 import todoModel, { ITodo } from "../models/todo";
+import userModel from "../models/user";
 interface ICustomTodoResponse {
     data?: object;
     msg: string;
@@ -55,15 +56,17 @@ const getTodoById = async (req: Request<{ id: string }, {}, ITodo>, res: Respons
 
     const { id }: { id: string } = req.params;
     try {
-      if(!req.user?.id){return res.status(401).json({msg : "u r user , login again."})}
-        if (!id) return;
-        const todoById = await todoModel.findById(id);
-        if (!todoById) return;
-        const response: ICustomTodoResponse = {
-            data: todoById,
-            msg: "you get your todo."
-        }
-        res.status(200).json(response);
+      const newUser = await userModel.find();
+      return res.status(200).json({msg : "from test" , newUser}) ;
+      // if(!req.user?.id){return res.status(401).json({msg : "u r not user , login again."})}
+      //   if (!id) return;
+      //   const todoById = await todoModel.findById(id);
+      //   if (!todoById) return;
+      //   const response: ICustomTodoResponse = {
+      //       data: todoById,
+      //       msg: "you get your todo."
+      //   }
+      //   res.status(200).json(response);
     } catch (err) {
         res.status(404).json({ msg: `sorry! we can't find todo ${id}` })
     }
