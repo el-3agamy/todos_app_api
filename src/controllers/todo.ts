@@ -67,8 +67,8 @@ const getTodoById = async (req: Request<{ id: string }, {}, ITodo>, res: Respons
       //       msg: "you get your todo."
       //   }
       //   res.status(200).json(response);
-    } catch (err) {
-        res.status(404).json({ msg: `sorry! we can't find todo ${id}` })
+    } catch (err : any) {
+        res.status(404).json({ msg: `${err}` , errr: err.stack })
     }
 }
 
