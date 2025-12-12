@@ -9,12 +9,12 @@ import userRouter from "./routes/user"
 const app : Application = express() ;
 const PORT : number = 3000 ;
 // connect DB  :
- mongoose.connect('mongodb://127.0.0.1:27017/todos-app-ts').then((res)=>{
+ mongoose.connect('mongodb+srv://selagamy25_db_user:njtGveecjWjXhP9I@cluster0.9aseogv.mongodb.net/todos-app-ts').then((res)=>{
     console.log("Done");
  }).catch((err)=>{
     console.log(`${err}`);
  });
-// cors middleware :
+// cors middleware :mongodb://localhost:27017/
 app.use(cors()) ; 
 // rate limit middleware : ==> for security (to avoid DOS attacks) & performance .
 const limiter : RateLimitRequestHandler = rateLimit({ //Checks the IP and request frequency, then may immediately block the request (429 Too Many Requests).
@@ -42,3 +42,8 @@ app.use((req,res,next)=>{
 app.listen(PORT , ()=>{
     console.log(`server work on port : ${PORT}`); 
 });
+
+//selagamy25_db_user : email 
+//njtGveecjWjXhP9I  : password
+//mongodb+srv://selagamy25_db_user:njtGveecjWjXhP9I@cluster0.9aseogv.mongodb.net/ :  Use this connection string in your application
+
